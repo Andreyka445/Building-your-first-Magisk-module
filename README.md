@@ -1,4 +1,4 @@
-# Что такое Magisk и ROOT менеджеры в целом
+# Что такое Magisk и ROOT менеджеры
 Magisk — это инструмент, который дает root-права, а Root-менеджер — это приложение, которое контролирует, кто этими правами может пользоваться. В Magisk эти две функции объединены в одном пакете.
 
 # Для начала нужно определится для чего нам нужен модуль?
@@ -6,8 +6,11 @@ Magisk — это инструмент, который дает root-права,
 После того, как определилиь для чего нам нужен модуль приступаем к следующему шагу - сборке модуля.
 
 # Содержание
-
-1) [Замена системных файлов](https://github.com/Andreyka445/Building-your-first-Magisk-module#1-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F---%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D1%8B%D1%85-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2)
+1) [Что такое Magisk и ROOT менеджеры?](https://github.com/Andreyka445/Building-your-first-Magisk-module?tab=readme-ov-file#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-magisk-%D0%B8-root-%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D1%8B-%D0%B2-%D1%86%D0%B5%D0%BB%D0%BE%D0%BC)
+2) [Определяемся для чего нам нужен модуль](https://github.com/Andreyka445/Building-your-first-Magisk-module?tab=readme-ov-file#%D0%B4%D0%BB%D1%8F-%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D1%81%D1%8F-%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B0%D0%BC-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8C)
+3) [Сборка модуля](https://github.com/Andreyka445/Building-your-first-Magisk-module#2-%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9---%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B8-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5--prop-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D1%85)
+4) [Замена системных файлов](https://github.com/Andreyka445/Building-your-first-Magisk-module#1-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F---%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D1%8B%D1%85-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2)
+5) [Замена/Добавление .prop переменных](https://github.com/Andreyka445/Building-your-first-Magisk-module#2-%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9---%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B8-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5--prop-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D1%85)
 
 # Сборка модуля
 ТРЕБОВАНИЯ: Magisk 20.04+

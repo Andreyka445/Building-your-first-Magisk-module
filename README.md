@@ -1,3 +1,4 @@
+# Создаём свой первый Magisk модуль / [Creating your first Magisk module - eng ver of instruction](https://github.com/Andreyka445/Building-your-first-Magisk-module/tree/eng_ver)  
 # Что такое Magisk и ROOT менеджеры
 Magisk — это инструмент, который дает root-права, а Root-менеджер — это приложение, которое контролирует, кто этими правами может пользоваться. В Magisk эти две функции объединены в одном пакете.
 

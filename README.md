@@ -1,5 +1,5 @@
 [![magisk-manager.jpg](https://i.postimg.cc/L43JCvMJ/magisk-manager.jpg)](https://postimg.cc/t77R73Jb)
-# Creating your first [Magisk](https://github.com/topjohnwu/Magisk/releases) module / [Creating your first Magisk module - eng ver of instruction](https://github.com/Andreyka445/Building-your-first-Magisk-module/tree/eng_ver)  
+# Creating your first [Magisk](https://github.com/topjohnwu/Magisk/releases) module / [Создаём свой первый Magisk модуль - версия инструкции на русском](https://github.com/Andreyka445/Building-your-first-Magisk-module)  
 # What are Magisk and ROOT managers?
 Magisk is a tool that grants root privileges, while a Root manager is an application that controls who can use these privileges. In Magisk, these two functions are combined into a single package.
 

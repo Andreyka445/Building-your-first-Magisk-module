@@ -1,82 +1,83 @@
 [![magisk-manager.jpg](https://i.postimg.cc/L43JCvMJ/magisk-manager.jpg)](https://postimg.cc/t77R73Jb)
-# Создаём свой первый [Magisk](https://github.com/topjohnwu/Magisk/releases) модуль / [Creating your first Magisk module - eng ver of instruction](https://github.com/Andreyka445/Building-your-first-Magisk-module/tree/eng_ver)  
-# Что такое Magisk и ROOT менеджеры
-Magisk — это инструмент, который дает root-права, а Root-менеджер — это приложение, которое контролирует, кто этими правами может пользоваться. В Magisk эти две функции объединены в одном пакете.
+# Creating your first [Magisk](https://github.com/topjohnwu/Magisk/releases) module / [Creating your first Magisk module - eng ver of instruction](https://github.com/Andreyka445/Building-your-first-Magisk-module/tree/eng_ver)  
+# What are Magisk and ROOT managers?
+Magisk is a tool that grants root privileges, while a Root manager is an application that controls who can use these privileges. In Magisk, these two functions are combined into a single package.
 
-# Определямся для чего нам нужен модуль?
-самые популярные модули - это модули , которые редактируют системные файлы, заменяют .prop переменные и выполнение всякого рода скриптов.
-После того, как определилиь для чего нам нужен модуль приступаем к следующему шагу - сборке модуля.
+# Decide what we need the module for.
+The most popular modules are those that edit system files, replace .prop variables, and execute all kinds of scripts.
+Once we have decided what we need the module for, we move on to the next step—building the module.
 
-# Содержание
-1) [Что такое Magisk и ROOT менеджеры?](https://github.com/Andreyka445/Building-your-first-Magisk-module?tab=readme-ov-file#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-magisk-%D0%B8-root-%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D1%8B-%D0%B2-%D1%86%D0%B5%D0%BB%D0%BE%D0%BC)
-2) [Определяемся для чего нам нужен модуль](https://github.com/Andreyka445/Building-your-first-Magisk-module?tab=readme-ov-file#%D0%B4%D0%BB%D1%8F-%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D1%81%D1%8F-%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B0%D0%BC-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8C)
-3) [Сборка модуля](https://github.com/Andreyka445/Building-your-first-Magisk-module#2-%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9---%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B8-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5--prop-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D1%85)
-4) [Замена системных файлов](https://github.com/Andreyka445/Building-your-first-Magisk-module#1-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F---%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D1%8B%D1%85-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2)
-5) [Замена/Добавление .prop переменных](https://github.com/Andreyka445/Building-your-first-Magisk-module#2-%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9---%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B8-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5--prop-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D1%85)
-6) [Удаление ситемных фалойв/Папок](https://github.com/Andreyka445/Building-your-first-Magisk-module#3-%D1%82%D1%80%D0%B5%D1%82%D0%B8%D0%B9-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9---%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D0%B8%D1%82%D0%B5%D0%BC%D0%BD%D1%8B%D1%85-%D1%84%D0%B0%D0%BB%D0%BE%D0%B9%D0%B2%D0%BF%D0%B0%D0%BF%D0%BE%D0%BA)
-7) [Заключение](https://github.com/Andreyka445/Building-your-first-Magisk-module#%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5)
+# Contents
+1) [What about Magisk and ROOT managers?](https://github.com/Andreyka445/Building-your-first-Magisk-module?tab=readme-ov-file#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-magisk-%D0%B8-root-%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D1%8B-%D0%B2-%D1%86%D0%B5%D0%BB%D0%BE%D0%BC)
+2) [Decide what we need the module for](https://github.com/Andreyka445/Building-your-first-Magisk-module?tab=readme-ov-file#%D0%B4%D0%BB%D1%8F-%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D1%81%D1%8F-%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B0%D0%BC-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8C)
+3) [Build the module](https://github.com/Andreyka445/Building-your-first-Magisk-module#2-%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9---%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B8-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5--prop-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D1%85)
+4) [Replacing system files](https://github.com/Andreyka445/Building-your-first-Magisk-module#1-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F---%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D1%8B%D1%85-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2)
+5) [Replacing/Adding .prop variables](https://github.com/Andreyka445/Building-your-first-Magisk-module#2-%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9---%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B8-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5--prop-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D1%85)
+6) [Deleting system files/folders](https://github.com/Andreyka445/Building-your-first-Magisk-module#3-%D1%82%D1%80%D0%B5%D1%82%D0%B8%D0%B9-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9---%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D0%B8%D1%82%D0%B5%D0%BC%D0%BD%D1%8B%D1%85-%D1%84%D0%B0%D0%BB%D0%BE%D0%B9%D0%B2%D0%BF%D0%B0%D0%BF%D0%BE%D0%BA)
+7) [Conclusion](https://github.com/Andreyka445/Building-your-first-Magisk-module#%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5)
 
-# Сборка модуля
-ТРЕБОВАНИЯ: Magisk 20.4+
-Все config файлы должны быть в кодировке UTF-8. Для удобного редактирования файлов рекомендую использовать [NotePad++](https://notepad-plus-plus.org/) / [MT-mangaer](https://mt-manager.net/)
-Модуль обязателно должен быть в .zip архиве без защиты паролем.
+# Module assembly
+REQUIREMENTS: Magisk 20.4+
+All config files must be in UTF-8 encoding. For convenient file editing, I recommend using [NotePad++](https://notepad-plus-plus.org/) / [MT-mangaer](https://mt-manager.net/)
+The module must be in a .zip archive without password protection.
 
-Чтобы приступить к сборке модуля скачайте "пустышку".
-1) Распакуйте пустышку в любую папку
-2) Добавьте необходимые изменения и соберите готовый модуль в .zip
+To begin assembling the module, download the “dummy file.”
+1) Unzip the dummy file into any folder.
+2) Make the necessary changes and assemble the finished module into a .zip file.
 
-# Кратко пройдёмся по каждому из сценариев
+# Let's briefly go over each of the scenarios.
 
-# 1) Сценарий использования - Замена системных файлов
+# 1) Usage scenario - Replacing system files.
 
-  Замена системных файлов.
-Внутри пустышки есть папка system в неё поместите файлы, которые нужно заменить, но при этом соблюдайте пусть к оригинальному файлу.
+  Replacing system files.
+Inside the dummy file, there is a system folder. Place the files you want to replace in it, but make sure to keep the original file.
 
 
- Необходимо заменить framework-res.apk, который лежит по пути /system/framewrok
- Решение: В папке с распакованной "пустышкой" есть папки _system_, создайте в ней папку _framework_ и поместите туда свой изменённый оверлей.
+ You need to replace framework-res.apk, which is located in /system/framewrok.
+ Solution: In the folder with the unpacked “dummy,” there is a folder called _system_. Create a folder called _framework_ in it and place your modified overlay there.
 
- Что делать, если файл, который нужно заменить находится в другом разделе?
+ What if the file you need to replace is in another section?
 
- Если требуется замена в другом разделе _/system_ext_ , _/product_ или _/vendor_, то __ВАЖНО (bold)__ внури папки _system_, которая уже есть в пустыше создайте папку с нужным вам разделом, напиример _vendor_ и укажите путь к файлу выглядить это должно вот так:     
+ If you need to replace a file in another partition, such as _/system_ext_, _/product_, or _/vendor_, it is IMPORTANT (bold) to create a folder with the desired partition, for example, _vendor_, inside the _system_ folder that is already in the dummy file, and specify the path to the file. It should look like this:     
  _/system/vendor/etc/hw/init.aee.rc_
- # 2) Второй сценарий - Замена и добавление  .prop переменных
-   Необходимо: Заменить/Добаить .prop
+ 
+ # 2) Second scenario - Replacing and adding .prop variables
+   Required: Replace/Add .prop
    
-   Решение: В скачаной пустышке есть файл _sytem.prop_ , добавьте в него вашу переменную так, как она должна выглядеть в системе.
+   Solution: The downloaded dummy file contains a file called _sytem.prop_. Add your variable to it as it should appear in the system.
 
-   Пример: Нужно отключить blur, который включен по дэфолту в системе, для этого в файл _system.prop_ копирую переменные "ro.sf.blurs_are_expensive=1" и ro.surface_flinger.support_background_blur=1", где "1" - это _true (включено)_ , а "0" - это _false (выключено)_
+   Example: You need to disable blur, which is enabled by default in the system. To do this, copy the variables “ro.sf.blurs_are_expensive=1” and ro.surface_flinger.support_background_blur=1“ to the _system.prop_ file, where ”1" is _true (enabled)_ , and “0” is _false (disabled)_
 
    
-   Конечный результат в файле _system.prop_ выглядит так: _"ro.sf.blurs_are_expensive=0" и ro.surface_flinger.support_background_blur=0"_
+   The final result in the _system.prop_ file looks like this: _“ro.sf.blurs_are_expensive=0” and ro.surface_flinger.support_background_blur=0"_
    
-   # 3) Третий сценарий - Удаление ситемных фалойв/Папок
-  Задача №1 -   Удаляем системный файл
+   # 3) Third scenario - Deleting system files/folders
+  Task #1 -   Delete the system file
 
-  Решение:
+  Solution:
 
-  ___Помните , что структура файлов и папок должна быть идентична системной!___
+  ___Remember that the structure of files and folders must be identical to the system structure!___
 
-  Возвращаемся к первому сценарию, где нам нужно было заменить framework-res.apk на свой, но сейчас мы будем его удалять.
-  В распакованной "пустышке" в папке _system_ создаём путь _framework_ , далее создаем пустой .apk и даём ему название  framework-res.apk, и помещаем его по наему пути.
+  Let's go back to the first scenario, where we needed to replace framework-res.apk with our own, but now we will delete it.
+  In the unpacked “dummy” in the _system_ folder, create a path _framework_, then create an empty .apk and name it  framework-res.apk, and place it in the path.
 
-В итоге что у нас получилоь _system/framewrok/framewrok-res.apk (но наш апк уже пустой).
+As a result, we got _system/framewrok/framewrok-res.apk (but our apk is already empty).
 
-___Задача №2 - Удаляем системную папку/Несколько дирректорий сразу___
+___Task #2 - Deleting a system folder/several directories at once___
 
-Решение:
-Рассмтрим это на примере _system/fonts_
+Solution:
+Let's look at an example using _system/fonts_
 
- В папке с расспакованной "пустышкой" в папке _system_ создаём папку _fonts_, тем самым мы восстановили оригинальный путь к этой папке внутри нашего модуля, далее внутри папки в моём случае _fonts_ создаём пустой файл и даём ему "___.replace___" 
- Конечный результат _/system/fonts/.replace_.
+ In the folder with the unpacked “dummy” in the _system_ folder, create a folder called _fonts_. This will restore the original path to this folder within our module. Next, inside the folder, in my case _fonts_, create an empty file and name it “___.replace___.” 
+ The final result is _/system/fonts/.replace_.
 
-Прошивка такого модуля приведёт к полному удалению всех файлов в дирректории.
+Flashing such a module will result in the complete deletion of all files in the directory.
 
-Если неообходимо удалить несколько папок, то нунжно создать скрипт ___customize.sh___, в котором пропишите следующий код, но заменените пути на свои
+If you need to delete several folders, you need to create a script ___customize.sh___, in which you write the following code, but replace the paths with your own
 
-Структура удаляемых элементов должна быть идентична системной.
-Важно: Если удаление файлов/папок производится в отдельных системных разделах "/vendor", "/product" и (или) "/system_ext", структура путей в создаваемом модуле выглядит следующим образом (помещаются внутрь "system"): "system/vendor/...", "system/product/...", "system/system_ext/...". Не создавайте такие директории в корне вашего модуля!
-Обратите внимание: Фактического удаления чего-либо из системных разделов не происходит! Все вернется на круги своя после отключения/удаления модуля.
+The structure of the deleted items must be identical to the system structure.
+Important: If files/folders are deleted in separate system partitions “/vendor”, “/product” and (or) “/system_ext”, the path structure in the created module looks like this (placed inside “system”): “system/vendor/...”, “system/product/...”, “system/system_ext/...”. Do not create such directories in the root of your module!
+Please note: Nothing is actually deleted from the system partitions! Everything will return to normal after the module is disabled/removed.
 
 ```
 REPLACE="
@@ -84,5 +85,5 @@ REPLACE="
 /system/app/PrintSpooler
 "
 ```
-# Заключение
-___В заключении хочу поздравить вас со своим первым созданным Magisk модулем!___
+# Conclusion
+___In conclusion, I would like to congratulate you on your first Magisk module!___
